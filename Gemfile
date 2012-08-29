@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+gem  'kaminari'
+gem 'padrino-helpers'
+gem  'thin'
+gem  'sinatra'
+gem 'mysql2' 
+gem  'activerecord'
+gem  'json'
