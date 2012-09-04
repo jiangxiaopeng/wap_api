@@ -12,17 +12,20 @@ class Video < ActiveRecord::Base
   # 视频列表
   def api_video(type,cid,pg,pz)
     if cid != nil && !cid.eql?("")
+      total = Video.where(:video_type=>type,:cid=>cid).count
       videos = Video.where(:video_type=>type,:cid=>cid).page(pg).per(pz)
     else 
+      total = Video.where(:video_type=>type).count
       videos = Video.where(:video_type=>type).page(pg).per(pz)  
     end
-    json = video_hash(videos)
+    json = video_hash(videos,total)
     json
   end
 
-  def video_hash(videos)
+  def video_hash(videos,total)
     hash = {}
     hash.store("results", video_array(videos))
+    hash.store("total", total)
     hash
   end
 
