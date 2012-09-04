@@ -1,12 +1,7 @@
 require 'kaminari/sinatra'
 require 'active_record'
-ActiveRecord::Base.establish_connection(
-adapter: "mysql2", 
-encode: "utf8", 
-host: "localhost", 
-username: "root", 
-password: "", 
-database: "wap_cms")
+require "yaml"
+ActiveRecord::Base.establish_connection YAML::load(IO.read 'db/database.yml')[ENV['ENV'] || 'production' || 'development']
 
 class Video < ActiveRecord::Base
   # 视频列表
