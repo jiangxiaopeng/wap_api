@@ -1,0 +1,29 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: wap_cms
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: cms_test
+  pool: 5
+  username: root
+  password:
+  #socket: localhost
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: mos
+  pool: 5
+  username: cms
+  password: zQ2VfCqsSn
+  host: localhost
