@@ -85,26 +85,4 @@ class Video < ActiveRecord::Base
     hash.store("privilege_price", video.privilege_price)
     hash
   end
-  
-  #统计 
-  def api_stat(vid) 
-    stat = Stat.find_by_video_id(vid)
-    json = stat_hash(stat)
-    json
-  end
-  
-  def stat_hash(stat)
-    hash = {}
-    hash.store("results", _stat_hash(stat))
-    hash
-  end
-
-  def _stat_hash(stat)
-    hash={}
-    hash.store("videoid", stat.video_id)
-    hash.store("title", stat.title)
-    hash.store("purchase_count", stat.purchase_count)
-    hash.store("play_count", stat.play_count)
-    hash
-  end
 end
