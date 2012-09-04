@@ -1,6 +1,6 @@
 require 'sinatra'
-require File.join(File.dirname(__FILE__),'model')
-
+require File.join(File.dirname(__FILE__),'model/video')
+require File.join(File.dirname(__FILE__),'model/stat')
 get '/videos.json' do 
   content_type :json
   type = params[:type]
@@ -18,3 +18,9 @@ get '/videodetail.json' do
   vid = params[:vid]
   json = Video.new.api_videodetail(vid).to_json
 end
+
+get '/stat.json' do 
+  content_type :json
+  vid = params[:vid]
+  json = Video.new.api_stat(vid).to_json
+end 
