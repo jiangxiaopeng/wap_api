@@ -9,7 +9,10 @@ get '/videos.json' do
   if pg == nil 
     pg = 1
   end 
-  pz = 6
+  pz = params[:pz]
+  if pz == nil
+    pz = 6 
+  end  
   cid = params[:cid] 
   json = Video.new.api_video(type,cid,pg,pz).to_json
 end
