@@ -8,10 +8,10 @@ class Video < ActiveRecord::Base
   def api_video(type,cid,pg,pz)
     if cid != nil && !cid.eql?("")
       total = Video.where(:video_type=>type,:cid=>cid).count
-      videos = Video.where(:video_type=>type,:cid=>cid).page(pg).per(pz)
+      videos = Video.where(:video_type=>type,:cid=>cid).order("id DESC").page(pg).per(pz)
     else 
       total = Video.where(:video_type=>type).count
-      videos = Video.where(:video_type=>type).page(pg).per(pz)  
+      videos = Video.where(:video_type=>type).order("id DESC").page(pg).per(pz)  
     end
     json = video_hash(videos,total)
     json
